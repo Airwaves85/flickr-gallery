@@ -1,0 +1,43 @@
+<div layout="column">
+  <toolbar></toolbar>
+  <div class="md-padding" flex layout="row">
+    <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2 md-padding" id="favourite-list">
+      <ul class="dynamic-grid" angular-grid="favourites.images" ag-grid-width="150" ag-gutter-size="10"
+          ag-id="favourite-gallery"
+          ag-refresh-on-img-load="true" ag-options="angularGridOptions">
+        <li ng-repeat="favourite in favourites.images" class="grid">
+          <img ng-src="{{favourite}}" class="grid-img" ng-click="removeFromFavourites(favourite)"/>
+        </li>
+      </ul>
+    </md-sidenav>
+    <md-content flex class="md-padding" layout="column" layout-margin>
+      <md-content class="md-whiteframe-z2">
+        <div layout="row" layout-align="center center">
+          <form name="searchForm">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Search...</label>
+              <input type="text" required name="search" ng-model="search" ng-change="searchImages()"
+                     ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0 }}"/>
+
+              <div ng-messages="searchForm.search.$error">
+                <div ng-message="required">Search is required.</div>
+              </div>
+            </md-input-container>
+          </form>
+        </div>
+      </md-content>
+      <md-content class="md-whiteframe-z2" id="wrap">
+        <ul class="dynamic-grid" angular-grid="items" ag-grid-width="300" ag-gutter-size="10" ag-id="gallery"
+            ag-refresh-on-img-load="true" ag-infinite-scroll="loadMore()" ag-options="angularGridOptions">
+          <li ng-repeat="item in items" class="grid">
+            <md-card>
+              <img ng-src="{{item.medium}}" class="grid-img" data-actual-width="{{item.actualWidth}}"
+                   data-actual-height="{{item.actualHeight}}" ng-click="addToFavourites(item.medium)"/>
+            </md-card>
+          </li>
+        </ul>
+      </md-content>
+    </md-content>
+  </div>
+</div>
+
