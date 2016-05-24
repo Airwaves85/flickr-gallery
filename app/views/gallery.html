@@ -1,4 +1,4 @@
-<div layout="column">
+<div layout="column" >
   <toolbar></toolbar>
   <div class="md-padding" flex layout="row">
     <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2 md-padding" id="favourite-list">
@@ -6,7 +6,7 @@
           ag-id="favourite-gallery"
           ag-refresh-on-img-load="true" ag-options="angularGridOptions">
         <li ng-repeat="favourite in favourites.images" class="grid">
-          <img ng-src="{{favourite}}" class="grid-img" ng-click="removeFromFavourites(favourite)"/>
+          <img ng-src="{{::favourite}}" class="grid-img" ng-click="removeFromFavourites(favourite)"/>
         </li>
       </ul>
     </md-sidenav>
@@ -31,8 +31,8 @@
             ag-refresh-on-img-load="true" ag-infinite-scroll="loadMore()" ag-options="angularGridOptions">
           <li ng-repeat="item in items" class="grid">
             <md-card>
-              <img ng-src="{{item.medium}}" class="grid-img" data-actual-width="{{item.actualWidth}}"
-                   data-actual-height="{{item.actualHeight}}" ng-click="addToFavourites(item.medium)"/>
+              <img ng-src="{{::item.medium}}" class="grid-img" data-actual-width="{{::item.actualWidth}}"
+                   data-actual-height="{{::item.actualHeight}}" ng-click="addToFavourites(item.medium)"/>
             </md-card>
           </li>
         </ul>
