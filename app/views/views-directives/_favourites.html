@@ -1,0 +1,9 @@
+<md-sidenav md-is-locked-open="true" class="md-whiteframe-z2 md-padding" id="favourite-list">
+  <ul class="dynamic-grid" angular-grid="favourites.images" ag-grid-width="150" ag-gutter-size="10"
+      ag-id="favourite-gallery"
+      ag-refresh-on-img-load="true" ag-options="angularGridOptions">
+    <li ng-repeat="favourite in favourites.images" class="grid">
+      <img ng-src="{{::favourite}}" class="grid-img" ng-click="removeFromFavourites(favourite)"/>
+    </li>
+  </ul>
+</md-sidenav>

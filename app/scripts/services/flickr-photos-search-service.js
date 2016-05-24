@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('flickrGalleryApp').factory('TestService', function ($resource) {
+angular.module('flickrGalleryApp').factory('FlickrSearchService', function ($resource) {
+  
   const apiKey = '&api_key=91bace887faabf57a704cea71a25eaf2';
   const apiUrl = 'https://api.flickr.com/services/rest/?method=';
   const method = 'flickr.photos.search';
@@ -9,7 +10,6 @@ angular.module('flickrGalleryApp').factory('TestService', function ($resource) {
 
   return $resource(null,null, {
     query : {url:apiUrl+method+apiKey+format+callback,method: 'GET', isArray: true, transformResponse : function(data){
-
       data = angular.fromJson(data);
 
       angular.forEach(data.photos.photo, function(obj){

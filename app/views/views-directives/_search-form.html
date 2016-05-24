@@ -1,0 +1,15 @@
+<md-content class="md-whiteframe-z2">
+  <div layout="row" layout-align="center center">
+    <form name="searchForm">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Search...</label>
+        <input type="text" required name="search" ng-model="search" ng-change="searchImages()"
+               ng-model-options="{updateOn: 'default blur', debounce: { 'default': 1000, 'blur': 0 }}"/>
+        <div ng-messages="searchForm.search.$error">
+          <div ng-message="required">Search is required.</div>
+        </div>
+      </md-input-container>
+    </form>
+  </div>
+</md-content>
+

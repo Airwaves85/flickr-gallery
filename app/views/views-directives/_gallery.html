@@ -1,0 +1,11 @@
+<md-content class="md-whiteframe-z2" id="wrap">
+  <ul class="dynamic-grid" angular-grid="items" ag-grid-width="300" ag-gutter-size="10" ag-id="gallery"
+      ag-refresh-on-img-load="true" ag-infinite-scroll="loadMore()" ag-options="angularGridOptions">
+    <li ng-repeat="item in items" class="grid">
+      <md-card>
+        <img ng-src="{{::item.medium}}" class="grid-img" data-actual-width="{{::item.actualWidth}}"
+             data-actual-height="{{::item.actualHeight}}" ng-click="addToFavourites(item.medium)"/>
+      </md-card>
+    </li>
+  </ul>
+</md-content>
